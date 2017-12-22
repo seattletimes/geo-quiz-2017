@@ -6,14 +6,57 @@
   </head>
   <body>
 
-    <responsive-child>
-      <!-- content goes here -->
-    </responsive-child>
+    <style>
+.geo-quiz-2017-image {
+  display: block;
+}
 
-    <script src="app.js" async></script>
-    <% if (json.project.production) { %>
-    <%= !json.project.embedded ? t.include("partials/_analytics.html") : "" %>
-    <%= t.include("partials/_workHere.html") %>
-    <% } %>
+.geo-quiz-2017-answers {
+  list-style: lower-alpha;
+}
+
+.geo-quiz-2017-answer {
+  display: inline-block;
+  font-style: italic;
+  transform: rotate(180deg);
+  transform-origin: 50%;
+  margin-bottom: 20px;
+}
+
+.geo-quiz-2017-answer:hover,
+.geo-quiz-2017-focus:focus {
+  transform: rotate(0);
+}
+    </style>
+
+    <% var section = ""; %>
+    <% json.Questions.forEach(function(q, i) { %>
+      <% if (q.section !== section) { section = q.section; %>
+      <h2><%= section %></h2>
+      <% } %>
+
+      <% if (q.image) { %>
+      <img class="geo-quiz-2017-image" src="https://projects.seattletimes.com/2017/geo-quiz/assets/<%= q.image %>.jpg">
+      <% } %>
+
+      <%= q.id %>. <%= q.question %>
+
+      <ol class="geo-quiz-2017-answers">
+        <% json.Answers.forEach(function(a) { %>
+          <% if (a.id !== q.id) return; %>
+          <li> <%= a.answer %>
+        <% }) %>
+      </ol>
+
+      <div>
+        <div class="geo-quiz-2017-answer">
+          <% json.Answers.forEach(function(a) { %>
+            <% if (a.id !== q.id || !a.correct) return; %>
+            Answer: <%= a.correct.toLowerCase() == "x" ? a.answer : a.correct %>
+          <% }) %>
+        </div>
+      </div>
+    <% }) %>
+
   </body>
 </html>

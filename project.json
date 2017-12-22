@@ -6,7 +6,7 @@
     },
     "live": {
       "bucket": "projects.seattletimes.com",
-      "path": ""
+      "path": "2017/geo-quiz"
     }
   },
   "title": "",
@@ -16,5 +16,5 @@
   "sheets": ["1JS2ocK4y_JvhBPN8deWwE7_YdPvQJ0KL5SywuS3Vdg0"],
   "standout": false,
   "embedded": true,
-  "production": false
+  "production": true
 }
