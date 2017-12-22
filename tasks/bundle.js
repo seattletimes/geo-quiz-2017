@@ -21,12 +21,7 @@ module.exports = function(grunt) {
 
     async.forEachOf(seeds, function(dest, src, c) {
       var b = browserify({ debug: mode == "dev" });
-      b.plugin(require("browser-pack-flat/plugin"));
-      b.transform(babel, { global: true, presets: [
-        ["env", {
-          targets: { browsers: ["ie >= 10", "safari >= 8"]}
-        }]
-      ]});
+      b.transform(babel);
 
       //make sure build/ exists
       grunt.file.mkdir("build");
@@ -52,7 +47,7 @@ module.exports = function(grunt) {
         var sourcemap = grunt.file.readJSON(mapFile);
         sourcemap.sources = sourcemap.sources.map(function(s) { return s.replace(/\\/g, "/") });
         grunt.file.write(mapFile, JSON.stringify(sourcemap, null, 2));
-
+        
         c();
       });
     }, done);

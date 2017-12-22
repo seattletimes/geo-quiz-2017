@@ -6,15 +6,13 @@
   <% data.forEach(function(story) { %>
     <div class="story">
       <div class="padded">
-        <a href="<%= story.link %>">
-          <img src="./assets/<%= story.image %>"></img>
-        </a>
-        <div class="small"><%= story.category %></div>
-        <div>
-          <a href="<%= story.link %>">
-            <%= story.head %>
-          </a>
-        </div>
+      <a href="<%= story.link %>">
+        <img src="./assets/<%= story.image %>"></img>
+      </a>
+      <div class="small"><%= story.category %></div>
+      <a href="<%= story.link %>">
+        <div><%= story.title %></div>
+      </a>
       </div>
     </div>
   <% }); %>

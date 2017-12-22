@@ -1,62 +1,64 @@
 <!doctype html>
-<html lang="en-US">
+<html>
   <head>
-    <%= t.include("partials/_head.html", grunt.data.json) %>
+    <title><%= json.project.title %></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="stylesheet" type="text/css" href="style.css">
+    <link href='http://fonts.googleapis.com/css?family=Paytone+One:700,400,300' rel='stylesheet' type='text/css'>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <%= t.include("partials/_head.html") %>
   </head>
   <body>
 
-    <style>
-.geo-quiz-2017-image {
-  display: block;
-}
+    <responsive-child>
 
-.geo-quiz-2017-answers {
-  list-style: lower-alpha;
-}
+    <div class="outer">
 
-.geo-quiz-2017-answer {
-  display: inline-block;
-  font-style: italic;
-  transform: rotate(180deg);
-  transform-origin: 50%;
-  margin-bottom: 20px;
-}
+      <div class="quiz-container">
 
-.geo-quiz-2017-answer:hover,
-.geo-quiz-2017-focus:focus {
-  transform: rotate(0);
-}
-    </style>
+        <div class="divider"></div>
 
-    <% var section = ""; %>
-    <% json.Questions.forEach(function(q, i) { %>
-      <% if (q.section !== section) { section = q.section; %>
-      <h2><%= section %></h2>
-      <% } %>
+        <div class="quiz-box"> 
 
-      <% if (q.image) { %>
-      <img class="geo-quiz-2017-image" src="https://projects.seattletimes.com/2017/geo-quiz/assets/<%= q.image %>.jpg">
-      <% } %>
+          <!-- START OF QUIZ -->
+          <div class="question-box"></div>
 
-      <%= q.id %>. <%= q.question %>
-
-      <ol class="geo-quiz-2017-answers">
-        <% json.Answers.forEach(function(a) { %>
-          <% if (a.id !== q.id) return; %>
-          <li> <%= a.answer %>
-        <% }) %>
-      </ol>
-
-      <div>
-        <div class="geo-quiz-2017-answer">
-          <% json.Answers.forEach(function(a) { %>
-            <% if (a.id !== q.id || !a.correct) return; %>
-            Answer: <%= a.correct.toLowerCase() == "x" ? a.answer : a.correct %>
-          <% }) %>
         </div>
-      </div>
-    <% }) %>
 
+        <div class="divider"></div>
+
+      </div>
+    </div>
+
+    </responsive-child>
+
+    <script>
+      <% 
+        var quizData = {};
+        json.Quiz_Questions.forEach(function(q) {
+          quizData[q.id] = q;
+        });
+        json.Quiz_Answers.forEach(function(a, index) {
+          var id = a.id;
+          a.index = index;
+          if (!quizData[id].answers) { quizData[id].answers = [] }
+          quizData[id].answers.push(a);
+        });
+      %>
+      var quizData = <%= JSON.stringify(quizData) %>;
+      var resultsData = <%= JSON.stringify(json.Quiz_Results) %>;
+      var configData = {
+        title: "<%= json.project.title %>",
+        description: "<%= json.project.description %>",
+        url: "<%= json.project.url %>"
+      }
+    </script>
+
+    <script src="app.js"></script>
+    <% if (json.project.production) { %>
+    <%= !json.project.embedded ? t.include("partials/_foot.html") : "" %>
+    <%= t.include("partials/_workHere.html") %>
+    <% } %>
   </body>
 </html>

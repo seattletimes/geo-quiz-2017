@@ -79,8 +79,8 @@ module.exports = function(grunt) {
     aws.config.update(creds);
 
     var s3 = new aws.S3();
-    var uploads = findBuiltFiles();
-    async.eachLimit(uploads, 10, function(upload, c) {
+      var uploads = findBuiltFiles();
+      async.eachLimit(uploads, 10, function(upload, c) {
 
       async.waterfall([function(next) {
         //create the config object
@@ -97,12 +97,12 @@ module.exports = function(grunt) {
         var extension = upload.path.split(".").pop();
         if (gzippable.indexOf(extension) == -1) return next(null, obj);
         // run compression
-        var before = upload.buffer.length;
-        return gzip(upload.buffer, function(err, zipped) {
+          var before = upload.buffer.length;
+          return gzip(upload.buffer, function(err, zipped) {
           if (err) return next(err);
-          obj.Body = zipped;
-          var after = zipped.length;
-          obj.ContentEncoding = "gzip";
+              obj.Body = zipped;
+              var after = zipped.length;
+              obj.ContentEncoding = "gzip";
           next(null, obj);
         });
       }, function(obj, next) {
@@ -112,18 +112,18 @@ module.exports = function(grunt) {
         var logString = compressed ? "... %s - %s %s %s (%s)" : "... %s - %s";
         var args = [logString, obj.Key, chalk.cyan(formatSize(before))];
         if (compressed) args.push(
-          chalk.yellow("=>"),
-          chalk.cyan(formatSize(after)),
+                chalk.yellow("=>"),
+                chalk.cyan(formatSize(after)),
           chalk.bold.green(Math.round(after / before * 100).toFixed(1) + "% via gzip")
-        );
+              );
         console.log.apply(console, args);
         if (deploy != "simulated") s3.putObject(obj, next);
       }], c);
       
-    }, function(err) {
-      if (err) return console.log(err);
-      console.log("All files uploaded successfully");
-      done();
+      }, function(err) {
+        if (err) return console.log(err);
+        console.log("All files uploaded successfully");
+        done();
     });
   });
 

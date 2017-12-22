@@ -8,7 +8,7 @@ module.exports = function(grunt) {
 
   var async = require("async");
   var less = require("less");
-
+  
   var path = require("path");
   var through = require("through2");
   var npmImporter = require("./lib/npm-less");
@@ -18,9 +18,9 @@ module.exports = function(grunt) {
     filename: "seed.less",
     plugins: [npmImporter]
   };
-
+  
   grunt.registerTask("less", "Compile styles from src/css/seed.less", function() {
-
+    
     var done = this.async();
 
     var seeds = {
@@ -30,7 +30,7 @@ module.exports = function(grunt) {
     async.forEachOf(seeds, function(dest, src, c) {
 
       var seed = grunt.file.read(src);
-
+      
       less.render(seed, options, function(err, result) {
         if (err) {
           grunt.fail.fatal(err.message + " - " + err.filename + ":" + err.line);
@@ -41,7 +41,7 @@ module.exports = function(grunt) {
       });
 
     }, done)
-
+    
   });
 
 };

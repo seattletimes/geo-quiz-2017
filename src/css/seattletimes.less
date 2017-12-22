@@ -27,28 +27,15 @@ body {
 
 main {
   display: block;
-
-  &.interactive {
-    padding: 20px 10px;
-    margin: 20px auto;
-    border-top: 1px solid @df-light-gray;
-    border-bottom: 1px solid @df-light-gray;
-    font-family: @df-sans;
-  }
 }
 
 a {
   color: @df-blue;
   text-decoration: none;
-
-  &:visited {
-    color: @df-middle-gray;
-  }
-
-  &:hover, &:focus {
+  outline: 0 !important;
+  &:hover {
     color: @df-navy;
   }
-
   img {
     border: none;
   }
@@ -89,37 +76,6 @@ h4 {
   margin: @df-line-base/2 0 0 0;
 }
 
-
-//common style elements
-
-.byline {
-  font-size: 18px;
-  margin: 24px auto;
-
-  @media @tablet {
-    padding: 0 16px;
-    padding-top: 40px;
-
-  }
-
-  @media @mobile {
-    padding: 0 16px;
-    padding-top: 40px;
-
-  }
-
-  .staff {
-    font-style: italic;
-    font-size: 16px;
-  }
-
-  .date {
-    font-size: 16px;
-    font-family: @df-sans;
-    color: @df-dark-gray;
-  }
-}
-
 //header and menu
 nav.main-nav {
   background: white;
@@ -127,14 +83,13 @@ nav.main-nav {
   box-shadow: 0 2px 7px rgba(0, 0, 0, .1);
   position: relative;
   line-height: 1;
-  z-index: 999;
 
   .wrapper {
     max-width: 1020px;
     margin: auto;
     position: relative;
     padding: 10px;
-
+    
     @media @mobile {
       padding: 6px;
     }
@@ -187,80 +142,14 @@ nav.main-nav {
 
 .ad {
   text-align: center;
-  margin: 16px auto;
+  padding: 16px 0;
 
-  &.pending {
-    &::before {
-      display: block;
-      content: "";
-    }
-
-    &[data-type="banner"],
-    &[data-type="bannerBottom"]{
-      max-width: 728px;
-      &::before {
-        padding-bottom: percentage(90 / 728);
-      }
-    }
-
-    &[data-type="tall"] {
-      max-width: 300px;
-      &::before {
-        padding-bottom: percentage(600 / 300);
-      }
-    }
-
-    &[data-type="square"] {
-      max-width: 300px;
-      &::before {
-        padding-bottom: percentage(250 / 300);
-      }
-    }
-  }
-}
-
-.subscribe-box {
-  padding: 0;
-
-  h2 {
-    margin: 0;
-  }
-
-  img {
-    display: inline-block;
-    padding-right: 10px;
-    height: 24px;
+  &.square {
+    float: right;
+    width: 320px;
 
     @media @mobile {
-      display: block;
-      margin: 24px auto;
-      padding-right: 0;
-    }
-  }
-
-  .button-box {
-    padding-top: 10px;
-    .display-flex();
-    .justify-content(center);
-    .align-items(center);
-
-    @media @mobile {
-      display: block;
-      text-align: center;
-    }
-  }
-
-  .subscribe-button {
-    display: inline-block;
-    background: @df-blue;
-    padding: 12px 15px 10px 15px;
-    color: white;
-    font-weight: bold;
-    font-size: 14px;
-    letter-spacing: .08em;
-
-    &:hover {
-      background: @df-light-gray;
+      width: 100%;
     }
   }
 }
@@ -341,8 +230,8 @@ footer.nav-bottom {
 
   .logo {
     float: left;
-    margin-right: 10px;
-
+    margin-right: 10px; 
+    
     img {
       margin-top: 5px;
       height: 20px;
