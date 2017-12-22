@@ -93,8 +93,8 @@ var watchNext = function() {
 };
 
 var calculateResult = function() {
-  for (var index in resultsData) {
-    var result = resultsData[index];
+  for (var i = 0; i < resultsData.length; i++) {
+    var result = resultsData[i];
     if (score >= result.min && score <= result.max) {
       // display result
       result.score = score;
@@ -106,6 +106,11 @@ var calculateResult = function() {
         result.color = "#e12329";
       }
       result.total = Object.keys(quizData).length;
+
+      result.outcomes = resultsData.filter(r => r.description).map(r => ({
+        description: r.description,
+        match: r == result
+      }));
 
       $(".question-box").html(ich.overviewTemplate(result));
       
@@ -121,6 +126,8 @@ var calculateResult = function() {
           }
         }
       });
+
+      return;
     }
   }
 };
