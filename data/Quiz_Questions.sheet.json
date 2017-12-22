@@ -111,7 +111,7 @@
   },
   {
     "id": 23,
-    "question": "Which of these Middle Eastern names does NOT also belong to a town in Oregon?",
+    "question": "Which of these Middle Eastern names does NOT also belong to a community in Oregon?",
     "section": "Part Five: IN OUR CORNER"
   },
   {
@@ -178,54 +178,63 @@
     "id": 36,
     "question": "Name that festival:",
     "image": 1,
-    "section": "Part Eight: PHOTO QUIZ"
+    "section": "Part Eight: PHOTO QUIZ",
+    "caption": "Leo Correa / The Associated Press"
   },
   {
     "id": 37,
     "question": "Name that festival:",
     "image": 2,
-    "section": "Part Eight: PHOTO QUIZ"
+    "section": "Part Eight: PHOTO QUIZ",
+    "caption": "Luis Soto / The Associated Press"
   },
   {
     "id": 38,
     "question": "Name that festival:",
     "image": 3,
-    "section": "Part Eight: PHOTO QUIZ"
+    "section": "Part Eight: PHOTO QUIZ",
+    "caption": "Darryl Dyck / The Associated Press"
   },
   {
     "id": 39,
     "question": "Name that festival:",
     "image": 4,
-    "section": "Part Eight: PHOTO QUIZ"
+    "section": "Part Eight: PHOTO QUIZ",
+    "caption": "Ian Forsyth / Getty Images"
   },
   {
     "id": 40,
     "question": "Name that festival:",
     "image": 5,
-    "section": "Part Eight: PHOTO QUIZ"
+    "section": "Part Eight: PHOTO QUIZ",
+    "caption": "Abir Abdullah / EPA"
   },
   {
     "id": 41,
     "question": "What's that skyscraper?",
     "image": 6,
-    "section": "Part Eight: PHOTO QUIZ"
+    "section": "Part Eight: PHOTO QUIZ",
+    "caption": "Michael Appleton / NYT"
   },
   {
     "id": 42,
     "question": "What's that skyscraper?",
     "image": 7,
-    "section": "Part Eight: PHOTO QUIZ"
+    "section": "Part Eight: PHOTO QUIZ",
+    "caption": "Cameron Hewitt"
   },
   {
     "id": 43,
     "question": "What's that skyscraper?",
     "image": 8,
-    "section": "Part Eight: PHOTO QUIZ"
+    "section": "Part Eight: PHOTO QUIZ",
+    "caption": "Ellen M. Banner / The Seattle Times"
   },
   {
     "id": 44,
     "question": "What's that skyscraper?",
     "image": 9,
-    "section": "Part Eight: PHOTO QUIZ"
+    "section": "Part Eight: PHOTO QUIZ",
+    "caption": "Kamran Jebreili / The Associated Press"
   }
 ]
