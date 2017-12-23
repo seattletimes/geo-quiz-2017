@@ -108,7 +108,7 @@ var calculateResult = function() {
       result.total = Object.keys(quizData).length;
 
       result.outcomes = resultsData.filter(r => r.description).map(r => ({
-        description: r.description,
+        description: `${r.min} - ${r.max}: ${r.description}`,
         match: r == result
       }));
 
